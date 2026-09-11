@@ -303,17 +303,13 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .po-left h2{font-size:clamp(25px,3.2vw,35px);margin:36px 0 18px 10%;max-width:380px}
 .po-intro{margin:0 0 0 10%;max-width:380px}
 .po-left img{aspect-ratio:1;object-fit:cover;max-width:100%}
-.po-a{width:72%;margin:120px 0 0 10%}
+/* The left photos pin and hold while the copy on the right scrolls past. */
+.po-a{position:sticky;top:0;width:72%;margin:120px 0 0 10%}
 .po-b{position:sticky;top:0;width:106%;margin:0 0 0 -6%}
 
 .po-right>p{margin:0 0 1.15em}
 .po-right strong{color:var(--white)}
-/* Two photos pin to the top and hold while the opposite column scrolls
-   past them, as on the original. */
-.po-lead{
-  position:sticky;top:0;
-  width:100%;aspect-ratio:1;object-fit:cover;margin:0;max-width:100%;
-}
+.po-lead{width:100%;aspect-ratio:1;object-fit:cover;margin:0;max-width:100%}
 @media (min-width:1240px){
   .po-lead{width:118%;max-width:none;margin-left:-8%}
 }
@@ -339,8 +335,7 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 @media (max-width:860px){
   .po-grid{grid-template-columns:1fr;gap:0}
   .po-left h2,.po-intro{margin-left:0;max-width:none}
-  .po-a,.po-b{width:100%;margin:26px 0 0}
-  .po-lead,.po-b{position:static}
+  .po-a,.po-b{width:100%;margin:26px 0 0;position:static}
   .po-lead{margin-bottom:26px}
   .po-times{margin-top:26px}
   .po-join img{width:92px;height:58px}
