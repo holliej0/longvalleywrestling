@@ -313,24 +313,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 @media (min-width:1240px){
   .po-lead{width:118%;max-width:none;margin-left:-8%}
 }
-.po-times{margin:56px 0 1.6em}
+.po-times{margin:24px 0 1.6em}
 .po-times p{margin:0 0 .6em}
 .po-times ul{margin:0;padding-left:1.15em}
 .po-times li{margin-bottom:.45em}
-
-/* "Join the [photo] team" -- the photo sits inline, between the words */
-.po-join{
-  text-align:center;margin:40px 0 0;
-  font-size:clamp(30px,5vw,57px);line-height:1.25;
-}
-.po-join a{
-  color:var(--white);text-decoration:underline;
-  text-underline-offset:8px;text-decoration-thickness:4px;
-}
-.po-join img{
-  display:inline-block;vertical-align:middle;
-  width:132px;height:80px;object-fit:cover;margin:0 .12em;
-}
 
 @media (max-width:860px){
   .po-grid{grid-template-columns:1fr;gap:0}
@@ -338,7 +324,6 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
   .po-a,.po-b{width:100%;margin:26px 0 0;position:static}
   .po-lead{margin-bottom:26px}
   .po-times{margin-top:26px}
-  .po-join img{width:92px;height:58px}
 }
 
 /* ---------- contact ---------- */
