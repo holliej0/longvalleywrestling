@@ -78,16 +78,20 @@
   if (head && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var caret = head.querySelector('.caret');
     var full = head.textContent.trim();
-    var out = document.createElement('span');
-    head.textContent = '';
-    head.appendChild(out);
-    if (caret) head.appendChild(caret);
 
+    /* The headline stays in the DOM until the observer actually fires, so a
+       JS failure or a browser without IntersectionObserver still shows it. */
     var shown = false;
+    if (!('IntersectionObserver' in window)) return;
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting || shown) return;
         shown = true;
+        var out = document.createElement('span');
+        head.textContent = '';
+        head.appendChild(out);
+        if (caret) head.appendChild(caret);
         var k = 0;
         (function tick() {
           out.textContent = full.slice(0, k++);
