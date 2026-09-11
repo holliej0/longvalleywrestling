@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://use.typekit.net">
 <link rel="stylesheet" href="https://use.typekit.net/zau2ogq.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap">
-<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 </head>
 <body>
 
@@ -75,6 +75,6 @@
 </footer>
 
 <a href="#top" class="to-top" aria-label="Back to top">&uarr;</a>
-<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/site.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
 </body>
 </html>
