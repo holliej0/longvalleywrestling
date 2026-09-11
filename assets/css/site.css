@@ -271,6 +271,26 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 }
 .roster .role{font-size:14px;color:var(--muted);display:block}
 
+/* ---------- page imagery ---------- */
+.gallery{
+  list-style:none;margin:0 0 2em;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;
+}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;max-width:100%}
+
+.feature{width:100%;max-width:100%;margin:0 0 1.8em}
+
+.end-cta{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:2em}
+.end-cta img{width:90px;height:90px;object-fit:cover;flex:none}
+
+.roster-photos li{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.roster-photos img{
+  width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;
+  margin-bottom:18px;max-width:100%;
+}
+.roster-photos .name{padding-inline:18px}
+.roster-photos .role{padding:0 18px 24px}
+
 /* ---------- contact ---------- */
 .contact-block{text-align:center;padding:10px var(--pad) 80px}
 .contact-block .mark{

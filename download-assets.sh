@@ -25,6 +25,22 @@ get wrestling-team.png    "$B/2026/04/wrestling-team.png"
 get wrestlers.png         "$B/2026/04/wrestlers.png"
 get team-huddle.jpg       "$B/2024/11/325905338_883801412659007_3596544713226575971_n-e1733326322552.jpg"
 
+# Program Overview
+get program-1.jpg         "$B/2024/11/programoverview2.jpg"
+get program-3.jpg         "$B/2024/11/programoverview3.jpg"
+get program-cta.jpg       "$B/2024/11/430680147_913249473923025_4409660943965756890_n.jpg"
+
+# Store
+get store.png             "$B/2025/09/store.png"
+
+# Coaches Corner headshots
+get coach-lloyd.jpg       "$B/2024/11/Lloyd.jpeg"
+get coach-tommy.jpg       "$B/2025/09/Tommy.jpg"
+get coach-keith.jpg       "$B/2023/11/405762059_856891419558831_5395085744260644354_n.jpg"
+get coach-john.jpg        "$B/2025/09/John.jpg"
+get coach-jeremy.jpg      "$B/2025/09/Jeremy.jpg"
+get coach-justin.jpg      "$B/2025/09/Justin-1.jpg"
+
 echo
 echo "Done. $(ls assets/img | wc -l | tr -d ' ') files in assets/img/"
 echo "Now: git add assets/img && git commit -m 'Add images' && git push"
