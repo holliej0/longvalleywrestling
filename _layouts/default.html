@@ -43,6 +43,7 @@
 {{ content }}
 </main>
 
+{% if page.url == "/" %}
 <section class="cta">
   <div class="wrap">
     <p class="eyebrow">Long Valley Wrestling</p>
@@ -50,6 +51,7 @@
     <a class="btn btn-dark" href="{{ site.register_url }}" target="_blank" rel="noopener">Register</a>
   </div>
 </section>
+{% endif %}
 
 <footer class="site-footer">
   <div class="wrap footer-grid">
