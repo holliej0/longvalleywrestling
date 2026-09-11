@@ -310,6 +310,12 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .po-right li{margin-bottom:.45em}
 .po-right strong{color:var(--white)}
 .po-lead{width:100%;aspect-ratio:1;object-fit:cover;margin:0 0 32px;max-width:100%}
+/* On the original the lead photo is wider than the text column and bleeds
+   past the right edge. Only safe once the window is wide enough to absorb
+   it -- below this it would push the page into horizontal scrolling. */
+@media (min-width:1240px){
+  .po-lead{width:118%;max-width:none;margin-left:-8%}
+}
 
 .po-join{
   display:flex;align-items:center;justify-content:center;gap:34px;
