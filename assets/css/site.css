@@ -300,8 +300,10 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
   margin:36px 0 0 10%;max-width:380px;
 }
 .po-left img{aspect-ratio:1;object-fit:cover;max-width:100%}
-.po-a{width:72%;margin:86px 0 0 10%}
-.po-b{width:100%;margin:46px 0 0 -4%}
+/* The left photos sit low, aligned against the body text rather than the
+   heading, and the two meet with no gap between them -- as on the original. */
+.po-a{width:72%;margin:400px 0 0 10%}
+.po-b{width:106%;margin:0 0 0 -6%}
 
 .po-right>p{margin:0 0 1.15em}
 .po-right ul{margin:0 0 1.6em;padding-left:1.15em}
