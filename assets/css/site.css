@@ -1,0 +1,283 @@
+/* Long Valley Wrestling — site styles
+   Palette and type sampled from the original site.
+   Headings: Termina (Adobe Fonts). Body: DM Sans (Google Fonts). */
+
+:root{
+  --ink:#151515;          /* page background */
+  --ink-2:#1d1d1d;        /* alternate dark band */
+  --navy:#06274d;         /* navy sections + footer */
+  --sky:#8cd6f6;          /* light blue CTA */
+  --white:#fdfdfd;
+  --muted:#969696;
+  --line:rgba(253,253,253,.14);
+  --head:termina,"Termina","Archivo Black",Arial Black,Helvetica,sans-serif;
+  --body:"DM Sans",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  --wrap:1140px;
+  --pad:24px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--ink);color:var(--muted);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--white);text-decoration:none}
+a:hover{opacity:.85}
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--head);font-weight:600;color:var(--white);
+  margin:0 0 .5em;line-height:1.14;letter-spacing:-.01em;
+}
+h1{font-size:clamp(34px,5.2vw,57px)}
+h2{font-size:clamp(30px,4.4vw,47px)}
+h3{font-size:clamp(25px,3.2vw,35px)}
+h4{font-size:clamp(22px,2.6vw,28px)}
+h5{font-size:clamp(20px,2.2vw,24px)}
+h6{font-size:19px}
+p{margin:0 0 1.1em}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;background:var(--sky);color:#000;padding:10px 16px;z-index:99}
+:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+
+/* ---------- header ---------- */
+.site-header{
+  background:var(--ink);padding:28px var(--pad);
+  display:flex;flex-direction:column;align-items:center;gap:18px;
+  position:relative;z-index:40;
+}
+.brand img{width:150px;height:auto}
+.site-nav ul{
+  list-style:none;margin:0;padding:0;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 30px;
+}
+.site-nav a{
+  font-size:14px;letter-spacing:.02em;color:var(--white);
+  padding:6px 0;display:inline-block;border-bottom:2px solid transparent;
+}
+.site-nav a:hover,.site-nav a.current{border-bottom-color:var(--sky);opacity:1}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:10px}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--white);margin:5px 0;transition:.25s}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- marquee ---------- */
+.marquee{overflow:hidden;background:var(--ink);padding:10px 0 26px;user-select:none}
+.marquee-track{display:flex;width:max-content;animation:slide 26s linear infinite}
+.marquee-track span{
+  font-family:var(--head);font-weight:600;font-size:clamp(42px,8vw,92px);
+  color:#2b2b2b;padding-right:.55em;white-space:nowrap;text-transform:uppercase;
+}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* ---------- generic sections ---------- */
+.section{padding:76px 0}
+.section.tight{padding:44px 0}
+.section.navy{background:var(--navy)}
+.section.dark2{background:var(--ink-2)}
+.center{text-align:center}
+.lead{max-width:760px;margin-inline:auto}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-block;font-family:var(--body);font-size:14px;font-weight:500;
+  letter-spacing:.02em;padding:14px 30px;border:1px solid transparent;cursor:pointer;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.btn-light{background:var(--white);color:#111}
+.btn-light:hover{background:var(--sky);color:#0b0b0b;opacity:1}
+.btn-dark{background:#111;color:var(--white)}
+.btn-dark:hover{background:#000;opacity:1}
+.btn-outline{background:transparent;color:var(--white);border-color:var(--white)}
+.btn-outline:hover{background:var(--white);color:#111;opacity:1}
+.link-underline{
+  color:var(--white);border-bottom:1px solid var(--white);
+  padding-bottom:3px;font-size:15px;display:inline-block;
+}
+
+/* ---------- promo images ---------- */
+.promo{max-width:1000px;margin:0 auto 34px;padding-inline:var(--pad)}
+.promo img{width:100%}
+
+/* ---------- two-column blocks ---------- */
+.split{
+  display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:60px;align-items:center;
+}
+.split.flip{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.split .eyebrow{margin-bottom:22px}
+
+/* ---------- carousel ---------- */
+.carousel{position:relative}
+.carousel-viewport{overflow:hidden}
+.carousel-track{display:flex;transition:transform .5s ease}
+.carousel-track figure{margin:0;flex:0 0 100%}
+.carousel-track img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.carousel button{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,.42);border:0;color:#fff;width:40px;height:54px;
+  font-size:20px;cursor:pointer;line-height:1;
+}
+.carousel .prev{left:0}
+.carousel .next{right:0}
+.carousel-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.carousel-dots button{
+  width:8px;height:8px;border-radius:50%;border:0;padding:0;
+  background:#4a4a4a;cursor:pointer;
+}
+.carousel-dots button[aria-selected="true"]{background:var(--white)}
+
+/* ---------- quick links ---------- */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.trio h3{margin-bottom:22px}
+
+/* ---------- slogan band ---------- */
+.slogan{display:grid;gap:8px;padding:70px 0}
+.slogan-row{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap}
+.slogan-row img{width:110px;height:70px;object-fit:cover}
+.slogan-row h2{margin:0}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--sky);padding:82px 0;text-align:center}
+.cta .eyebrow{color:#0b2030}
+.cta-head{color:#0e0707;margin-bottom:28px}
+.caret{display:inline-block;width:3px;height:.85em;background:#0e0707;margin-left:6px;vertical-align:-.06em;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.eyebrow{
+  font-family:var(--body);font-size:12px;font-weight:500;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px;
+}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--navy);color:var(--white)}
+.footer-grid{
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;
+  padding-top:64px;padding-bottom:52px;align-items:start;
+}
+.footer-head{
+  font-size:clamp(28px,3.4vw,40px);margin:0;
+  text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px;
+}
+.site-footer h3{font-family:var(--head);font-size:19px;margin:0 0 16px;color:var(--white)}
+.social{list-style:none;display:flex;gap:12px;margin:0;padding:0}
+.social a{
+  width:34px;height:34px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;
+}
+.social a:hover{background:var(--sky);border-color:var(--sky)}
+.social svg{width:15px;height:15px;fill:currentColor}
+.social a:hover svg{fill:#06274d}
+.copyright{
+  border-top:1px solid var(--line);text-align:left;
+  font-size:12px;color:rgba(253,253,253,.6);
+  padding:14px var(--pad);max-width:var(--wrap);margin-inline:auto;
+}
+.to-top{
+  position:fixed;right:16px;bottom:16px;width:38px;height:38px;
+  background:var(--white);color:#111;display:none;place-items:center;
+  font-size:16px;z-index:50;
+}
+.to-top.show{display:grid}
+
+/* ---------- page header (inner pages) ---------- */
+.page-head{padding:70px 0 10px;text-align:center}
+.page-head h1{margin-bottom:0}
+
+/* ---------- prose (content pages) ---------- */
+.prose{max-width:860px;margin-inline:auto;padding:36px var(--pad) 70px}
+.prose h2{font-size:clamp(24px,3vw,32px);margin-top:1.6em}
+.prose h3{font-size:clamp(20px,2.2vw,24px);margin-top:1.5em}
+.prose h2:first-child,.prose h3:first-child{margin-top:0}
+.prose ul,.prose ol{margin:0 0 1.2em;padding-left:1.25em}
+.prose li{margin-bottom:.4em}
+.prose a{color:var(--sky);border-bottom:1px solid rgba(140,214,246,.4)}
+.prose strong{color:var(--white)}
+.prose .sect{margin-bottom:1.4em}
+.prose .sect-label{color:var(--white);font-weight:500;display:block;margin-bottom:.2em}
+
+/* ---------- tables ---------- */
+.table-wrap{overflow-x:auto;margin:0 0 1.6em}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line)}
+th{
+  font-family:var(--head);font-size:13px;color:var(--white);
+  text-transform:uppercase;letter-spacing:.06em;background:rgba(255,255,255,.04);
+}
+tbody tr:hover{background:rgba(255,255,255,.03)}
+
+/* ---------- accordion (FAQs) ---------- */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:22px 42px 22px 0;position:relative;
+  font-family:var(--head);font-size:clamp(17px,2vw,20px);color:var(--white);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  font-family:var(--body);font-size:26px;font-weight:400;color:var(--sky);
+}
+.faq details[open] summary::after{content:"\2013"}
+.faq .answer{padding:0 0 24px}
+.faq .answer>*:last-child{margin-bottom:0}
+
+/* ---------- roster (board / coaches) ---------- */
+.roster{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:0 0 24px;padding:0;list-style:none}
+.roster li{
+  background:var(--ink-2);border:1px solid var(--line);
+  padding:26px 22px;text-align:center;
+}
+.roster .name{
+  font-family:var(--head);font-size:19px;color:var(--white);
+  display:block;margin-bottom:6px;line-height:1.25;
+}
+.roster .role{font-size:14px;color:var(--muted);display:block}
+
+/* ---------- contact ---------- */
+.contact-block{text-align:center;padding:10px var(--pad) 80px}
+.contact-block .mark{
+  width:54px;height:54px;margin:0 auto 22px;display:grid;place-items:center;
+  border:1px solid var(--line);border-radius:50%;
+}
+.contact-block .mark svg{width:24px;height:24px;fill:var(--white)}
+.contact-block .lines{margin-top:26px;font-size:16px}
+.contact-block .lines a{color:var(--sky)}
+
+/* ---------- notice box ---------- */
+.notice{
+  border:1px solid var(--line);background:var(--ink-2);
+  padding:26px 28px;margin:0 0 28px;
+}
+.notice h2,.notice h3{margin-top:0}
+.notice p:last-child{margin-bottom:0}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .split,.split.flip{grid-template-columns:1fr;gap:34px}
+  .trio{grid-template-columns:1fr;gap:46px}
+  .roster{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:34px}
+}
+@media (max-width:720px){
+  body{font-size:16px}
+  .section{padding:54px 0}
+  .site-header{flex-direction:row;justify-content:space-between;padding:18px var(--pad)}
+  .brand img{width:96px}
+  .nav-toggle{display:block}
+  .site-nav{
+    position:absolute;top:100%;left:0;right:0;background:var(--ink);
+    border-top:1px solid var(--line);display:none;
+  }
+  .site-nav.open{display:block}
+  .site-nav ul{flex-direction:column;gap:0;padding:8px 0}
+  .site-nav a{display:block;padding:13px var(--pad);width:100%;border-bottom:0}
+  .site-nav a.current{background:rgba(255,255,255,.05)}
+  .slogan-row img{width:78px;height:52px}
+  .roster{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:30px}
+  .cta{padding:58px 0}
+}

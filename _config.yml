@@ -1,0 +1,26 @@
+title: Long Valley Wrestling
+tagline: Fear the Pack
+email: lvwolfpackwrestling@gmail.com
+phone: "(908) 674-6971"
+phone_link: "19086746971"
+url: "https://www.longvalleywrestling.com"
+
+# External destinations — change these in one place
+register_url: "https://register.teamsnap.com/form/hW1wkFMlVBkofV1hBSWNl"
+store_url: "https://www.lhembr.com/long-valley-wrestling.html"
+estebuilt_url: "https://sparkpages.io/cart/2/?i=_qkEb&c=&ocu="
+facebook: "https://www.facebook.com/longvalleywrestling"
+instagram: "https://www.instagram.com/longvalleywrestling/"
+youtube: "https://www.youtube.com/@lvwolfpackwrestling"
+
+nav:
+  - { title: "Home",               url: "/" }
+  - { title: "Program Overview",   url: "/program-overview/" }
+  - { title: "Tournament Schedule",url: "/tournament-schedule/" }
+  - { title: "FAQs",               url: "/faqs/" }
+  - { title: "Board / Team",       url: "/board/" }
+  - { title: "Bylaws",             url: "/bylaws/" }
+  - { title: "Store",              url: "/store/" }
+  - { title: "Contact Us",         url: "/contact-us/" }
+
+exclude: [README.md, download-assets.sh, Gemfile, Gemfile.lock]
