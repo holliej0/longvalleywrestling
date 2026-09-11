@@ -280,9 +280,6 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 
 .feature{width:100%;max-width:100%;margin:0 0 1.8em}
 
-.end-cta{display:flex;align-items:center;gap:26px;flex-wrap:wrap;margin-top:2em}
-.end-cta img{width:90px;height:90px;object-fit:cover;flex:none}
-
 .roster-photos li{padding:0;overflow:hidden;display:flex;flex-direction:column}
 .roster-photos img{
   width:100%;aspect-ratio:1;object-fit:cover;object-position:center top;
@@ -290,6 +287,48 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 }
 .roster-photos .name{padding-inline:18px}
 .roster-photos .role{padding:0 18px 24px}
+
+/* ---------- program overview: staggered two-column layout ---------- */
+.po{max-width:1100px;margin-inline:auto;padding:44px var(--pad) 40px}
+.po-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
+  gap:0 56px;align-items:start;
+}
+.po-left{display:flex;flex-direction:column}
+.po-left h2{
+  font-size:clamp(25px,3.2vw,35px);
+  margin:36px 0 0 10%;max-width:380px;
+}
+.po-left img{aspect-ratio:1;object-fit:cover;max-width:100%}
+.po-a{width:72%;margin:86px 0 0 10%}
+.po-b{width:100%;margin:46px 0 0 -4%}
+
+.po-right>p{margin:0 0 1.15em}
+.po-right ul{margin:0 0 1.6em;padding-left:1.15em}
+.po-right li{margin-bottom:.45em}
+.po-right strong{color:var(--white)}
+.po-lead{width:100%;aspect-ratio:1;object-fit:cover;margin:0 0 32px;max-width:100%}
+
+.po-join{
+  display:flex;align-items:center;justify-content:center;gap:34px;
+  flex-wrap:wrap;margin-top:16px;padding-top:34px;
+}
+.po-join h2{margin:0}
+.po-join h2 a{
+  color:var(--white);text-decoration:underline;
+  text-underline-offset:6px;text-decoration-thickness:2px;
+}
+.po-join img{width:132px;height:132px;object-fit:cover;flex:none}
+
+@media (max-width:860px){
+  .po-grid{grid-template-columns:1fr;gap:0}
+  .po-left{order:2}
+  .po-right{order:1}
+  .po-left h2{margin:40px 0 22px;max-width:none}
+  .po-a,.po-b{width:100%;margin:0 0 18px}
+  .po-join{gap:22px;padding-top:24px}
+  .po-join img{width:96px;height:96px}
+}
 
 /* ---------- contact ---------- */
 .contact-block{text-align:center;padding:10px var(--pad) 80px}
