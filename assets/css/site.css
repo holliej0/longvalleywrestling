@@ -288,54 +288,56 @@ tbody tr:hover{background:rgba(255,255,255,.03)}
 .roster-photos .name{padding-inline:18px}
 .roster-photos .role{padding:0 18px 24px}
 
-/* ---------- program overview: staggered two-column layout ---------- */
+/* ---------- program overview: staggered two-column layout ----------
+   Left: heading, the intro paragraph, then two photos that meet edge to edge.
+   Right: the lead photo, then the schedule and the body copy, dropped well
+   down the column. The offsets are deliberate -- they are what stagger the
+   two columns against each other. */
 .po{max-width:1100px;margin-inline:auto;padding:44px var(--pad) 40px}
 .po-grid{
   display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
   gap:0 56px;align-items:start;
 }
+
 .po-left{display:flex;flex-direction:column}
-.po-left h2{
-  font-size:clamp(25px,3.2vw,35px);
-  margin:36px 0 0 10%;max-width:380px;
-}
+.po-left h2{font-size:clamp(25px,3.2vw,35px);margin:36px 0 18px 10%;max-width:380px}
+.po-intro{margin:0 0 0 10%;max-width:380px}
 .po-left img{aspect-ratio:1;object-fit:cover;max-width:100%}
-/* The left photos sit low, aligned against the body text rather than the
-   heading, and the two meet with no gap between them -- as on the original. */
-.po-a{width:72%;margin:400px 0 0 10%}
+.po-a{width:72%;margin:120px 0 0 10%}
 .po-b{width:106%;margin:0 0 0 -6%}
 
 .po-right>p{margin:0 0 1.15em}
-.po-right ul{margin:0 0 1.6em;padding-left:1.15em}
-.po-right li{margin-bottom:.45em}
 .po-right strong{color:var(--white)}
-.po-lead{width:100%;aspect-ratio:1;object-fit:cover;margin:0 0 32px;max-width:100%}
-/* On the original the lead photo is wider than the text column and bleeds
-   past the right edge. Only safe once the window is wide enough to absorb
-   it -- below this it would push the page into horizontal scrolling. */
+.po-lead{width:100%;aspect-ratio:1;object-fit:cover;margin:0;max-width:100%}
 @media (min-width:1240px){
   .po-lead{width:118%;max-width:none;margin-left:-8%}
 }
+.po-times{margin:330px 0 1.6em}
+.po-times p{margin:0 0 .6em}
+.po-times ul{margin:0;padding-left:1.15em}
+.po-times li{margin-bottom:.45em}
 
+/* "Join the [photo] team" -- the photo sits inline, between the words */
 .po-join{
-  display:flex;align-items:center;justify-content:center;gap:34px;
-  flex-wrap:wrap;margin-top:16px;padding-top:34px;
+  text-align:center;margin:40px 0 0;
+  font-size:clamp(30px,5vw,57px);line-height:1.25;
 }
-.po-join h2{margin:0}
-.po-join h2 a{
+.po-join a{
   color:var(--white);text-decoration:underline;
-  text-underline-offset:6px;text-decoration-thickness:2px;
+  text-underline-offset:8px;text-decoration-thickness:4px;
 }
-.po-join img{width:132px;height:132px;object-fit:cover;flex:none}
+.po-join img{
+  display:inline-block;vertical-align:middle;
+  width:132px;height:80px;object-fit:cover;margin:0 .12em;
+}
 
 @media (max-width:860px){
   .po-grid{grid-template-columns:1fr;gap:0}
-  .po-left{order:2}
-  .po-right{order:1}
-  .po-left h2{margin:40px 0 22px;max-width:none}
-  .po-a,.po-b{width:100%;margin:0 0 18px}
-  .po-join{gap:22px;padding-top:24px}
-  .po-join img{width:96px;height:96px}
+  .po-left h2,.po-intro{margin-left:0;max-width:none}
+  .po-a,.po-b{width:100%;margin:26px 0 0}
+  .po-lead{margin-bottom:26px}
+  .po-times{margin-top:26px}
+  .po-join img{width:92px;height:58px}
 }
 
 /* ---------- contact ---------- */
