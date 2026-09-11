@@ -73,6 +73,42 @@
     start();
   });
 
+  /* Horizontal parallax on the "Fear the Pack / Embrace the challenge" rows.
+     The two rows drift apart as the section travels up the viewport, matching
+     the original. Distance is small and deliberate: ~30px and ~45px. */
+  var slogan = document.querySelector('.slogan');
+  var rows = slogan ? slogan.querySelectorAll('.slogan-row') : [];
+  if (slogan && rows.length === 2 &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
+    var DRIFT = [-60, 90];   /* px of travel across the full pass, per row */
+    var ticking = false;
+
+    function place() {
+      ticking = false;
+      var r = slogan.getBoundingClientRect();
+      /* p runs from +0.5 (section below the fold) to -0.5 (fully above) */
+      var centre = r.top + r.height / 2;
+      var p = (centre - window.innerHeight / 2) / (window.innerHeight + r.height);
+      if (p > 0.5) p = 0.5;
+      if (p < -0.5) p = -0.5;
+      for (var i = 0; i < rows.length; i++) {
+        rows[i].style.transform = 'translate3d(' + (-p * DRIFT[i]).toFixed(2) + 'px,0,0)';
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(place);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    place();
+  }
+
   /* Typewriter on the CTA headline */
   var head = document.querySelector('.cta-head');
   if (head && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
