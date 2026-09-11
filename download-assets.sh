@@ -11,8 +11,8 @@ get () { echo "  $1"; curl -fsSL -o "assets/img/$1" "$2"; }
 echo "Downloading images..."
 get logo.png              "$B/2026/08/LVWrestling_2026.png"
 get icon.png              "$B/2024/11/icon.png"
-get registration-2026.png "$B/2026/08/ChatGPT-Image-Aug-28-2026-02_54_31-PM.png"
-get estebuilt.png         "$B/2026/04/estebuilt.png"
+get registration-2026.jpg "$B/2026/08/ChatGPT-Image-Aug-28-2026-02_54_31-PM.png"
+get estebuilt.jpg         "$B/2026/04/estebuilt.jpg"
 get img_4127.jpg          "$B/2026/08/IMG_4127.jpg"
 get img_1871.jpg          "$B/2026/08/IMG_1871.jpg"
 get img_4093-2.jpg        "$B/2026/08/IMG_4093-2.jpg"
@@ -20,8 +20,8 @@ get img_1521.jpg          "$B/2026/08/IMG_1521.jpg"
 get img_5136.jpg          "$B/2026/08/IMG_5136.jpg"
 get img_5135.jpg          "$B/2026/08/IMG_5135.jpg"
 get img_5132.jpg          "$B/2026/08/IMG_5132.jpg"
-get wrestling-team3.png   "$B/2026/04/wrestling-team3.png"
-get wrestling-team.png    "$B/2026/04/wrestling-team.png"
+get wrestling-team3.jpg   "$B/2026/04/wrestling-team3.jpg"
+get wrestling-team.jpg    "$B/2026/04/wrestling-team.jpg"
 get wrestlers.png         "$B/2026/04/wrestlers.png"
 get team-huddle.jpg       "$B/2024/11/325905338_883801412659007_3596544713226575971_n-e1733326322552.jpg"
 
@@ -43,4 +43,8 @@ get coach-justin.jpg      "$B/2025/09/Justin-1.jpg"
 
 echo
 echo "Done. $(ls assets/img | wc -l | tr -d ' ') files in assets/img/"
+echo
+echo "Resizing for the web..."
+python3 "$(dirname "$0")/optimize-images.py"
+echo
 echo "Now: git add assets/img && git commit -m 'Add images' && git push"
