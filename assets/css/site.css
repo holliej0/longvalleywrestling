@@ -131,6 +131,22 @@ p{margin:0 0 1.1em}
 .promo{max-width:1000px;margin:0 auto 34px;padding-inline:var(--pad)}
 .promo img{width:100%}
 
+/* ---------- store promo (homepage) ---------- */
+.store-promo{
+  display:flex;align-items:center;justify-content:space-between;gap:32px;
+  background:var(--navy);border-left:6px solid var(--sky);padding:40px 48px;
+}
+.store-promo:hover{opacity:1}
+.store-promo .eyebrow{color:var(--sky);margin-bottom:10px}
+.store-promo h3{margin:0 0 10px;color:var(--white)}
+.store-promo-text p:last-child{margin:0;color:#c9d6e6}
+.store-promo .btn{flex-shrink:0}
+.store-promo:hover .btn::after{bottom:100%}
+.store-promo:hover .btn{color:var(--white)}
+@media (max-width:767px){
+  .store-promo{flex-direction:column;align-items:flex-start;padding:32px 26px;gap:22px}
+}
+
 /* ---------- two-column blocks ---------- */
 .split{
   display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
