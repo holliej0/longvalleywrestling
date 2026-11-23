@@ -133,18 +133,45 @@ p{margin:0 0 1.1em}
 
 /* ---------- store promo (homepage) ---------- */
 .store-promo{
-  display:flex;align-items:center;justify-content:space-between;gap:32px;
-  background:var(--navy);border-left:6px solid var(--sky);padding:40px 48px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
+  background:var(--navy);border-left:6px solid var(--sky);overflow:hidden;
 }
 .store-promo:hover{opacity:1}
+.store-promo-text{padding:44px 40px 44px 44px;align-self:center}
 .store-promo .eyebrow{color:var(--sky);margin-bottom:10px}
-.store-promo h3{margin:0 0 10px;color:var(--white)}
-.store-promo-text p:last-child{margin:0;color:#c9d6e6}
-.store-promo .btn{flex-shrink:0}
+.store-promo h3{margin:0 0 12px;color:var(--white)}
+.store-promo-text p:not(.eyebrow){margin:0 0 26px;color:#c9d6e6}
 .store-promo:hover .btn::after{bottom:100%}
 .store-promo:hover .btn{color:var(--white)}
-@media (max-width:767px){
-  .store-promo{flex-direction:column;align-items:flex-start;padding:32px 26px;gap:22px}
+.store-promo-gear{
+  position:relative;background:#fff;
+  display:flex;align-items:flex-end;justify-content:center;
+  padding:30px 30px 26px;
+}
+.store-promo-gear::before{ /* soft sky floor under the gear */
+  content:"";position:absolute;left:12%;right:12%;bottom:20px;height:22px;
+  background:radial-gradient(ellipse at center,rgba(140,214,246,.55),rgba(140,214,246,0) 70%);
+}
+.store-promo-gear img{
+  position:relative;width:auto;mix-blend-mode:multiply;
+  margin-inline:-18px;transition:transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.store-promo-gear .g-crew{height:185px;transform:rotate(-5deg)}
+.store-promo-gear .g-hoodie{height:240px;z-index:2}
+.store-promo-gear .g-tee{height:185px;transform:rotate(5deg)}
+.store-promo-gear .g-cap{height:100px;margin-left:-6px}
+.store-promo:hover .g-crew{transform:rotate(-7deg) translateY(-6px)}
+.store-promo:hover .g-hoodie{transform:translateY(-10px)}
+.store-promo:hover .g-tee{transform:rotate(7deg) translateY(-6px)}
+.store-promo:hover .g-cap{transform:translateY(-4px) rotate(-4deg)}
+@media (prefers-reduced-motion:reduce){.store-promo-gear img{transition:none}}
+@media (max-width:860px){
+  .store-promo{grid-template-columns:1fr}
+  .store-promo-gear{order:-1;padding:24px 10px 18px}
+  .store-promo-gear .g-crew,.store-promo-gear .g-tee{height:112px}
+  .store-promo-gear .g-hoodie{height:145px}
+  .store-promo-gear .g-cap{height:64px}
+  .store-promo-text{padding:30px 26px 34px}
 }
 
 /* ---------- two-column blocks ---------- */
