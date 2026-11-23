@@ -131,47 +131,96 @@ p{margin:0 0 1.1em}
 .promo{max-width:1000px;margin:0 auto 34px;padding-inline:var(--pad)}
 .promo img{width:100%}
 
-/* ---------- store promo (homepage) ---------- */
-.store-promo{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);
-  background:var(--navy);border-left:6px solid var(--sky);overflow:hidden;
+/* ---------- store banner (homepage) ---------- */
+.store-banner{
+  --sb-ink:#06162e;
+  position:relative;isolation:isolate;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  min-height:420px;color:var(--white);
+  background:
+    radial-gradient(ellipse 55% 70% at 74% 58%,rgba(140,214,246,.30),rgba(140,214,246,0) 70%),
+    radial-gradient(ellipse 90% 90% at 20% 10%,#0b3567,rgba(11,53,103,0) 60%),
+    linear-gradient(160deg,#072b55,#041a36);
 }
-.store-promo:hover{opacity:1}
-.store-promo-text{padding:44px 40px 44px 44px;align-self:center}
-.store-promo .eyebrow{color:var(--sky);margin-bottom:10px}
-.store-promo h3{margin:0 0 12px;color:var(--white)}
-.store-promo-text p:not(.eyebrow){margin:0 0 26px;color:#c9d6e6}
-.store-promo:hover .btn::after{bottom:100%}
-.store-promo:hover .btn{color:var(--white)}
-.store-promo-gear{
-  position:relative;background:#fff;
-  display:flex;align-items:flex-end;justify-content:center;
-  padding:30px 30px 26px;
+.store-banner:hover{opacity:1}
+.sb-streaks{
+  position:absolute;z-index:-1;width:300px;height:150px;pointer-events:none;
+  background:url("../img/streaks.svg") no-repeat center/contain;
 }
-.store-promo-gear::before{ /* soft sky floor under the gear */
-  content:"";position:absolute;left:12%;right:12%;bottom:20px;height:22px;
-  background:radial-gradient(ellipse at center,rgba(140,214,246,.55),rgba(140,214,246,0) 70%);
+.sb-streaks-tl{top:-6px;left:-40px}
+.sb-streaks-br{bottom:-6px;right:-40px;transform:rotate(180deg)}
+
+.sb-copy{position:relative;z-index:2;align-self:center;padding:40px 12px 40px 48px}
+.sb-kicker{
+  display:flex;align-items:center;gap:14px;margin:0 0 6px;
+  font-family:"Barlow Condensed",var(--head);font-style:italic;font-weight:700;
+  font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--white);
 }
-.store-promo-gear img{
-  position:relative;width:auto;mix-blend-mode:multiply;
-  margin-inline:-18px;transition:transform .35s cubic-bezier(.2,.7,.2,1);
+.sb-kicker::after{content:"";flex:0 0 46px;height:3px;background:var(--sky);border-radius:2px}
+.sb-title{
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;margin:0 0 14px;
+  font-family:"Barlow Condensed",var(--head);font-style:italic;font-weight:800;
+  text-transform:uppercase;line-height:.92;letter-spacing:-.005em;
 }
-.store-promo-gear .g-crew{height:185px;transform:rotate(-5deg)}
-.store-promo-gear .g-hoodie{height:240px;z-index:2}
-.store-promo-gear .g-tee{height:185px;transform:rotate(5deg)}
-.store-promo-gear .g-cap{height:100px;margin-left:-6px}
-.store-promo:hover .g-crew{transform:rotate(-7deg) translateY(-6px)}
-.store-promo:hover .g-hoodie{transform:translateY(-10px)}
-.store-promo:hover .g-tee{transform:rotate(7deg) translateY(-6px)}
-.store-promo:hover .g-cap{transform:translateY(-4px) rotate(-4deg)}
-@media (prefers-reduced-motion:reduce){.store-promo-gear img{transition:none}}
+.sb-brush{
+  display:inline-block;white-space:nowrap;padding:.14em .5em .1em .4em;
+  background:no-repeat center/100% 100%;color:var(--sb-ink);
+}
+.sb-brush-white{background-image:url("../img/brush-white.svg");font-size:clamp(44px,5.8vw,68px)}
+.sb-brush-sky{
+  background-image:url("../img/brush-sky.svg");font-size:clamp(38px,4.8vw,56px);
+  margin:-.06em 0 0 .7em;transform:rotate(-3deg);
+}
+.sb-sub{
+  margin:0 0 22px;font-family:"Barlow Condensed",var(--head);font-style:italic;font-weight:700;
+  font-size:22px;letter-spacing:.03em;text-transform:uppercase;color:#cfe9f7;
+}
+.sb-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--white);color:var(--sb-ink);border-radius:8px;
+  padding:12px 22px 11px 26px;box-shadow:0 8px 22px rgba(0,0,0,.35);
+  font-family:"Barlow Condensed",var(--head);font-style:italic;font-weight:800;
+  font-size:26px;line-height:1;text-transform:uppercase;letter-spacing:.02em;
+  transition:background .25s,transform .25s;
+}
+.sb-cta svg{width:22px;height:22px;transition:transform .25s}
+.store-banner:hover .sb-cta{background:var(--sky);transform:translateY(-2px)}
+.store-banner:hover .sb-cta svg{transform:translateX(4px)}
+
+.sb-gear{position:relative;z-index:1}
+.sb-gear img{
+  position:absolute;width:auto;
+  filter:drop-shadow(0 16px 18px rgba(0,0,0,.45));
+  transition:transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.sb-gear .g-crew{height:66%;left:-3%;bottom:14%;transform:rotate(-8deg)}
+.sb-gear .g-tee{height:64%;right:-2%;bottom:16%;transform:rotate(8deg)}
+.sb-gear .g-hoodie{height:80%;left:47%;bottom:6%;transform:translateX(-50%);z-index:2}
+.sb-gear .g-cap{height:33%;right:3%;bottom:2%;z-index:3;transform:rotate(-8deg)}
+.store-banner:hover .g-crew{transform:rotate(-9deg) translateY(-6px)}
+.store-banner:hover .g-tee{transform:rotate(9deg) translateY(-6px)}
+.store-banner:hover .g-hoodie{transform:translateX(-50%) translateY(-8px)}
+.store-banner:hover .g-cap{transform:rotate(-12deg) translateY(-4px)}
+@media (prefers-reduced-motion:reduce){.sb-gear img,.sb-cta,.sb-cta svg{transition:none}}
+
 @media (max-width:860px){
-  .store-promo{grid-template-columns:1fr}
-  .store-promo-gear{order:-1;padding:24px 10px 18px}
-  .store-promo-gear .g-crew,.store-promo-gear .g-tee{height:112px}
-  .store-promo-gear .g-hoodie{height:145px}
-  .store-promo-gear .g-cap{height:64px}
-  .store-promo-text{padding:30px 26px 34px}
+  .store-banner{grid-template-columns:1fr;min-height:0}
+  .sb-gear{order:-1;height:300px;margin:8px auto 0;width:100%;max-width:520px}
+  .sb-gear .g-crew{left:4%}
+  .sb-gear .g-tee{right:4%}
+  .sb-copy{padding:6px 24px 36px;justify-self:center;text-align:center}
+  .sb-kicker{justify-content:center}
+  .sb-kicker::before{content:"";flex:0 0 46px;height:3px;background:var(--sky);border-radius:2px}
+  .sb-title{align-items:center}
+  .sb-brush-sky{margin-left:.4em}
+}
+@media (max-width:480px){
+  .sb-gear{height:230px}
+  .sb-kicker{font-size:15px;letter-spacing:.12em;gap:10px}
+  .sb-kicker::before,.sb-kicker::after{flex-basis:28px}
+  .sb-sub{font-size:19px}
+  .sb-cta{font-size:23px}
+  .sb-streaks{width:200px;height:100px}
 }
 
 /* ---------- two-column blocks ---------- */
